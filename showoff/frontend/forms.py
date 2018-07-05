@@ -1,8 +1,15 @@
+#coding:utf-8
 # Imports {{{
-from wtforms import TextField, PasswordField, validators
-from flask.ext.wtf import Form
+from wtforms import StringField, PasswordField, validators
+from flask_wtf import FlaskForm
+
 # }}}
 
-class LoginForm(Form):
-    username = TextField('Username', validators=[validators.Required(message='Username is required.')])
-    password = PasswordField('Password', validators=[validators.Required(message='Password is required.')])
+
+class LoginForm(FlaskForm):
+    username = StringField(
+        u'用户名',
+        validators=[validators.DataRequired(message=u'请输入用户名.')])
+    password = PasswordField(
+        u'密　码',
+        validators=[validators.DataRequired(message=u'请输入密码.')])

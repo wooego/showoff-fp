@@ -1,10 +1,10 @@
 <div class="paginator">
     {%- if paginator.has_previous %}
-    Page: <a href="{{ url_for(**paginator.first) }}">&laquo; first</a>
-    <a href="{{ url_for(**paginator.previous) }}">&lsaquo; prev</a>
+    <a href="{{ url_for(**paginator.first) }}">&laquo; 首页</a>
+    <a href="{{ url_for(**paginator.previous) }}">&lsaquo; 前页</a>
     {%- else %}
-    Page: &laquo; first
-    <span class="inactive"> &lsaquo; prev</span>
+    &laquo; 首页
+    <span class="inactive"> &lsaquo; 前页</span>
     {% endif %}
     | {{ paginator.page }} /
     {% if paginator.has_next %}
@@ -13,10 +13,10 @@
     {{ paginator.pages }} |
     {% endif %}
     {% if paginator.has_next %}
-    <a href="{{ url_for(**paginator.next) }}">next &rsaquo;</a>
-    <a href="{{ url_for(**paginator.last) }}">last &raquo;</a>
+    <a href="{{ url_for(**paginator.next) }}">后页&rsaquo;</a>
+    <a href="{{ url_for(**paginator.last) }}">末页&raquo;</a>
     {%- else %}
-    <span class="inactive">next &rsaquo;</span>
-    <span class="inactive">last &raquo;</span>
+    <span class="inactive">后页&rsaquo;</span>
+    <span class="inactive">末页&raquo;</span>
     {% endif %}
 </div>

@@ -31,6 +31,7 @@ class Show(object):
         """
 
         self.session = session
+        self.config = config
         self.album = album
         self.album_dir = os.path.join(config['ALBUMS_DIR'], album)
         self.show_dir = os.path.join(config['SHOWS_DIR'], album)
@@ -232,7 +233,7 @@ class Show(object):
         filenames = []
 
         for filename in self.data['files']:
-            image = Image(self.album, filename)
+            image = Image(self.album, filename, config=self.config)
             exif_manager = ExifManager(image)
             datetime = exif_manager.get_exif_datetime()
             filenames.append((datetime, filename))

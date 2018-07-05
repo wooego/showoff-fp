@@ -143,10 +143,11 @@ class ExifManager(object):
         return exif
 
     def get_exif_tag_value(self, exif, tag):
-        for tag, value in exif.items():
-            decoded = ExifTags.TAGS.get(tag, tag)
-            if decoded == tag:
-                return value
+        if hasattr(exif,'items'):
+            for tag, value in exif.items():
+                decoded = ExifTags.TAGS.get(tag, tag)
+                if decoded == tag:
+                    return value
         return None
 
     def get_exif_datetime(self):

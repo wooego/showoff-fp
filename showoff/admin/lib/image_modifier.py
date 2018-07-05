@@ -4,9 +4,9 @@ import os
 
 
 class ImageModifier(object):
-    def __init__(self, image):
+    def __init__(self, image,**kwargs):
         self.image = image
-        self.cache = CacheManager(image)
+        self.cache = CacheManager(image,**kwargs)
 
     def rotate(self, steps=1):
         if steps < 1:
@@ -32,10 +32,11 @@ class ImageModifier(object):
                 return
             exif = img._getexif()
             ret = {}
-            for tag, value in exif.items():
-                decoded = ExifTags.TAGS.get(tag, tag)
-                ret[decoded] = value
-            if 'Orientation' in ret:
-                orientation = int(ret['Orientation'])
-                if orientation in orientation_steps:
-                    self.rotate(orientation_steps[orientation])
+            if hasattr(exif, "items"):
+                for tag, value in exif.items():
+                    decoded = ExifTags.TAGS.get(tag, tag)
+                    ret[decoded] = value
+                if 'Orientation' in ret:
+                    orientation = int(ret['Orientation'])
+                    if orientation in orientation_steps:
+                        self.rotate(orientation_steps[orientation])

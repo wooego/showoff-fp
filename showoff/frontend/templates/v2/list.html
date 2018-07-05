@@ -1,6 +1,6 @@
 {% extends "v2/layout.html" %}
 
-{% block title %}{{ album }} page {{ paginator.page }} of {{ paginator.pages }}{% endblock %}
+{% block title %}{{ album }} 第{{ paginator.page }}/{{ paginator.pages }}页{% endblock %}
 
 {% block posthead %}
 <link rel="stylesheet" href="{{ url_for('frontend.static_files', filename='swipebox/src/css/swipebox.css') }}" type="text/css" />
@@ -16,17 +16,17 @@
 <div class="container">
     <div class="page-header">
         {% include "v2/_paginator.html" %}
-        <h1><a href="{{ url_for('frontend.show_album', album=album) }}">{{ album }}</a><small> ({{ paginator.count }} photos)</small></h1>
+        <h1><a href="{{ url_for('frontend.show_album', album=album) }}">{{ album }}</a><small> ({{ paginator.count }} 张照片)</small></h1>
     </div>
 
 
-    <h2>{{ config.THUMBNAILS_PER_PAGE }} photos per page. This is page {{ paginator.page }} of {{ paginator.pages }}</h2>
+    <h2>每页显示{{ config.THUMBNAILS_PER_PAGE }}张图片. 这是第{{ paginator.page }} / {{ paginator.pages }}页</h2>
 
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
 
-    {% set rows = config.THUMBNAILS_PER_PAGE / 2 %}
+    {% set rows = (config.THUMBNAILS_PER_PAGE + 1) / 2 %}
     {% for f in files | slice(rows|int) %}
     <div class="row">
         
@@ -34,8 +34,8 @@
         <div class="col-md-6 navigation-container">
             <div class="thumbnail">
                 <div class="btn-group-vertical" style="float:right;">
-                    <a class="btn" href="{{ url_for('frontend.image_page', album=album, filename=filename) }}" title="more information and sizes"><span class="glyphicon glyphicon-info-sign"></span></a>
-                    <a class="btn" href="{{ url_for('frontend.get_image', album=album, filename=filename, size='full') }}" title="Download full-size image"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+                    <a class="btn" href="{{ url_for('frontend.image_page', album=album, filename=filename) }}" title="更多信息和尺寸"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    <a class="btn" href="{{ url_for('frontend.get_image', album=album, filename=filename, size='full') }}" title="下载原图"><span class="glyphicon glyphicon-floppy-disk"></span></a>
                 </div>
                 <a class="swipebox thumb" href="{{ url_for('frontend.get_image', album=album, filename=filename, size='full') }}" title="{{ filename }}">
                     <img src="{{ url_for('frontend.get_image', album=album, filename=filename, size=config.THUMBNAIL_SIZE) }}" alt="{{ filename }}"/>

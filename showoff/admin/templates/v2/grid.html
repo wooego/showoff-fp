@@ -1,6 +1,6 @@
 {% extends "v2/layout.html" %}
 
-{% block title %}{{ album }} - grid view{% endblock %}
+{% block title %}{{ album }} - 网格视图{% endblock %}
 
 {% block extrahead %}
 <script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
@@ -18,26 +18,26 @@
     <div class="row">
         <div class="col-md-6">
             <ul>
-                <li>authentication required:
+                <li>需要认证:
                     <span id="toggle_show">
                         <a href="#" class="toggle-bool" data-setting="require_authentication" data-value="{{ show.get_setting('require_authentication') }}"></a>
                     </span>
                 </li>
-                <li>show album in reverse order:
+                <li>逆序显示图册:
                     <span id="toggle_reverse">
                         <a href="#" class="toggle-bool" data-setting="reverse" data-value="{{ show.get_setting('reverse') }}"></a>
                     </span>
                 </li>
-		        <li><a href="{{ url_for('admin.show_edit_users', album=album) }}">Edit users</a></li>
-                <li><a id="rotate-all-images" href="#">Rotate all images based on exif info</a></li>
+		        <li><a href="{{ url_for('admin.show_edit_users', album=album) }}">编辑用户</a></li>
+                <li><a id="rotate-all-images" href="#">基于exif信息旋转所有图片</a></li>
             </ul>
         </div>
         <div class="col-md-6">
             <ul>
-                <li><a href="{{ url_for('admin.add_all_images_to_show', album=album) }}">Add all images to show</a></li>
-                <li><a href="{{ url_for('admin.sort_show_by_exifdate', album=album) }}">Sort show by exifdate</a></li>
-                <li><a href="{{ url_for('admin.sort_show_by_filename', album=album) }}">Sort show by filename</a></li>
-                <li><a href="{{ url_for('admin.show_index') }}">Other albums</a><br>
+                <li><a href="{{ url_for('admin.add_all_images_to_show', album=album) }}">展示所有图片</a></li>
+                <li><a href="{{ url_for('admin.sort_show_by_exifdate', album=album) }}">根据exif时间对展示排序</a></li>
+                <li><a href="{{ url_for('admin.sort_show_by_filename', album=album) }}">根据文件名对展示排序</a></li>
+                <li><a href="{{ url_for('admin.show_index') }}">其他图册(Other albums)</a><br>
             </ul>
         </div>
     </div>

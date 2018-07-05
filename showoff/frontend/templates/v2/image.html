@@ -1,6 +1,6 @@
 {% extends "v2/layout.html" %}
 
-{% block title %}{{ config.TITLE }} - {{ filename }}{% endblock %}
+{% block title %}{{ config.TITLE.decode('utf-8') }} - {{ filename }}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -28,11 +28,13 @@
 </div>
 
 <div class="panel panel-default">
-<div class="panel-heading">Exif information</div>
+<div class="panel-heading">Exif 信息</div>
 <table class="table">
+    {% if exif %}
     {% for key in exif.keys() %}
     <tr><td>{{ key }}</td><td> {{ exif[key] }}</td></tr>
     {% endfor %}
+    {% endif %}
 </table>
 
 </div>

@@ -1,6 +1,10 @@
 {% extends "v2/layout.html" %}
-
-{% block title %}{{ config.TITLE }} - {{ filename }}{% endblock %}
+{% block title %}{{ config.TITLE.decode('utf-8') }} - {{ filename }}{% endblock %}
+{% block extrahead %}
+<script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
+<script src="{{ url_for('admin.static_files', filename='jquery.blockUI.js') }}"></script>
+<script src="{{ url_for('admin.static_files', filename='showoffadmin.js') }}"></script>
+{%endblock%}
 
 {% block body %}
 <h1><a href="{{ url_for('admin.show_album', album=album) }}">{{ album }}</a></h1>
@@ -9,7 +13,7 @@
 <div class="flash">{{ message }}</div>
 {% endfor %}
 
-<p>Download image in sizes:
+<p>以下列尺寸下载图片：
 {% for size in config.ALLOWED_SIZES %}
 {% if size != 'full' %}
 <a href="{{ url_for('admin.show_image', album=album, size=size, filename=filename) }}">{{ size }}</a>
@@ -20,13 +24,13 @@
 |
 {% endif %}
 {% endfor %}
-<br />Actions:
+<br />操作：
 {% if filename in show.data['files'] %}
-<a href="{{ url_for('admin.remove_image_from_show', album=album, filename=filename) }}">remove from show</a>
+<a href="{{ url_for('admin.remove_image_from_show', album=album, filename=filename) }}">取消展示</a>
 {% else %}
-<a href="{{ url_for('admin.add_image_to_show', album=album, filename=filename) }}">add to show</a>
+<a href="{{ url_for('admin.add_image_to_show', album=album, filename=filename) }}">添加展示</a>
 {% endif %}
-rotate clockwise:
+顺时针旋转：
 <a href="#" onclick='rotate("{{ url_for('admin.image_rotate', album=album, filename=filename, steps=1) }}");return false;'>¼</a> &raquo;
 <a href="#" onclick='rotate("{{ url_for('admin.image_rotate', album=album, filename=filename, steps=2) }}");return false;'>½</a> &raquo;
 <a href="#" onclick='rotate("{{ url_for('admin.image_rotate', album=album, filename=filename, steps=3) }}");return false;'>¾</a>
@@ -43,7 +47,7 @@ rotate clockwise:
 
 <script type="text/javascript">
 rotate = function(url) {
-    $.blockUI({ message: '<h1>Rotating image ...</h1>'});
+    $.blockUI({ message: '<h1>正在努力旋转图片...</h1>'});
     $.ajax({
         url: url,
         context: document.body,

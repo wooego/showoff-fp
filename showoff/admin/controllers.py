@@ -128,7 +128,7 @@ def show_index():
 @admin.route('/<album>/<filename>/rotate/<int:steps>/')
 def image_rotate(album, filename, steps=1):
     image = Image(album, filename, current_app.config)
-    image_modifier = ImageModifier(image)
+    image_modifier = ImageModifier(image,config=current_app.config)
     image_modifier.rotate(steps)
     return jsonify(result='OK')
 
@@ -136,7 +136,7 @@ def image_rotate(album, filename, steps=1):
 @admin.route('/<album>/rotate_exif/<filename>/')
 def exif_rotate_image(album, filename):
     image = Image(album, filename, current_app.config)
-    image_modifier = ImageModifier(image)
+    image_modifier = ImageModifier(image,config=current_app.config)
     image_modifier.rotate_exif()
     return jsonify(result='OK')
 

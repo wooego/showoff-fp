@@ -40,7 +40,8 @@ class CacheManager(object):
     def clear(self, size=None):
         if size is None:
             for size in self.config['ALLOWED_SIZES']:
-                self.remove_cached_file(size)
+                if size != 'full':
+                    self.remove_cached_file(size)
         else:
             self.remove_cached_file(size)
 

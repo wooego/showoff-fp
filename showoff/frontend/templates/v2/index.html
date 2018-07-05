@@ -3,18 +3,18 @@
 {% block body %}
 <div class="container">
 <div class="page-header">
-<h1><a href="{{ url_for('frontend.show_index') }}">{{ config.TITLE }}</a></h1>
+<h1><a href="{{ url_for('frontend.show_index') }}">{{ config.TITLE.decode('utf-8') }}</a></h1>
 </div>
 
-<h2>Available photo albums:</h2>
+<h2>可用的照片图册:</h2>
 
 {% for album in albums %}
 <div class="media">
-    <a class="pull-left" href="{{ url_for('frontend.show_album', album=album) }}">
-        <img src="{{ url_for('frontend.get_image', album=album, size=400, filename=shows[album].data['files'][0]) }}" />
+    <a href="{{ url_for('frontend.show_album', album=album) }}">
+        <img src="{{ url_for('frontend.get_image', album=album, size=200, filename=shows[album].data['files'][0]) }}" />
     </a>
     <div class="media-body">
-        <h4 class="media-heading"><a href="{{ url_for('frontend.show_album', album=album) }}">{{ album }}</a> ({{ shows[album].nr_of_items }} photos)</h4>
+        <h4 class="media-heading"><a href="{{ url_for('frontend.show_album', album=album) }}">{{ album.decode('utf-8') }}</a> ({{ shows[album].nr_of_items }} 张照片)</h4>
     </div>
 </div>
 {% endfor %}

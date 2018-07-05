@@ -136,7 +136,7 @@ var SHOWOFFADMIN = SHOWOFFADMIN || {};
 
     var rotate = function(steps, filename) {
         var url = file_url(filename) + 'rotate/' + steps + '/';
-        $.blockUI({ message: '<h1>Rotating image ...</h1>'});
+        $.blockUI({ message: '<h1>正在旋转图片...</h1>'});
         $.ajax({
             url: url,
             context: document.body,

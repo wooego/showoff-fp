@@ -1,3 +1,4 @@
+#coding:utf-8
 from flask import abort, current_app, session
 from showoff.lib import Paginator, Show
 import os, re

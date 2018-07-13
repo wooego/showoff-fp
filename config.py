@@ -1,17 +1,18 @@
+#coding:utf-8
 from os import environ as env
 
 DEBUG = True
 TITLE = env.get('GALLERY_TITLE') or '我的家庭相册'
-FRONTEND_HOST = '0.0.0.0'
-FRONTEND_PORT = 5050
-FRONTEND_BASEURL = 'http://photo'
+FRONTEND_HOST = '0.0.0.0' #not used in production
+FRONTEND_PORT = 5050 #not used in production
+FRONTEND_BASEURL = 'http://photo' #not used in production
 FRONTEND_PREFIX = '/gallery'
-FRONTEND_FCGI_SOCKET = '/home/fp862/workspaces/showoff/frontend.sock'
-ADMIN_HOST = '0.0.0.0'
-ADMIN_PORT = 5050
-ADMIN_BASEURL = 'http://photo'
+FRONTEND_FCGI_SOCKET = '/home/fp862/workspaces/showoff/frontend.sock' #not used in production
+ADMIN_HOST = '0.0.0.0' #not used in production
+ADMIN_PORT = 5051   #not used in production
+ADMIN_BASEURL = 'http://photo' #not used in production
 ADMIN_PREFIX = '/admin'
-ADMIN_FCGI_SOCKET = '/home/fp862/workspaces/showoff/admin.sock'
+ADMIN_FCGI_SOCKET = '/home/fp862/workspaces/showoff/admin.sock' #not used in production
 THUMBNAIL_SIZE = 400
 GRID_SIZE = 200
 ADMIN_THUMBNAIL_SIZE = 400
@@ -24,9 +25,9 @@ IMAGE_SIZE = 800
 ALLOWED_SIZES = [75, 200, 400, 500, 640, 800, 1024, 1600, 'full']
 THEME = 'v2'
 ADMIN_THEME = 'v2'
-CACHE_DIR = '/home/fp862/workspaces/showoff/cache'
-EDITS_DIR = '/home/fp862/workspaces/showoff/edits'
-SHOWS_DIR = '/home/fp862/workspaces/showoff/shows'
-ALBUMS_DIR = env.get('ALBUMS_DIR') or '/home/fp862/pictures/'
+CACHE_DIR = '/mnt/acer_data/showoff_config/cache'
+EDITS_DIR = '/mnt/acer_data/showoff_config/edits'
+SHOWS_DIR = '/mnt/acer_data/showoff_config/shows'
+ALBUMS_DIR = env.get('ALBUMS_DIR') or '/mnt/acer_data/pictures'
 SECRET_KEY = env.get('SECRET_KEY') or 'secret_key'
 FRONTEND_LIST_TEMPLATES = ['list', 'list_small', 'grid', 'galleria']

@@ -34,12 +34,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from flask import Blueprint, current_app, render_template, \
     send_from_directory, url_for, redirect, jsonify, request, \
     session
+from werkzeug.utils import secure_filename
+from pypinyin import lazy_pinyin
 from showoff.lib import Show, Image, CacheManager, ExifManager
 from showoff.admin.lib import ImageModifier
 from showoff.admin.lib.page import _paginated_overview
 
 import os
 import re
+import datetime
 
 admin = Blueprint('admin', __name__, template_folder='templates')
 
@@ -47,6 +50,11 @@ admin = Blueprint('admin', __name__, template_folder='templates')
 def render_themed(template, **options):
     template_path = os.path.join(current_app.config['ADMIN_THEME'], template)
     return render_template(template_path, **options)
+
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = set(['mp4','bmp','png', 'jpg', 'jpeg', 'gif'])
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 @admin.route('/static_files/<path:filename>')
@@ -115,6 +123,21 @@ def list_album(album, page, template='grid'):
 @admin.route('/<album>/')
 def show_album(album):
     return list_album(album, 1)
+
+
+@admin.route('/<album>/upload', methods=['GET','POST'])
+def upload(album):
+    if request.method == 'POST':
+        files = request.files.getlist('uploads')
+        for f in files:
+            if f and allowed_file(f.filename):
+                filename = secure_filename(f.filename)
+                if filename.startswith('.') or '.' not in filename:
+                    name = f.filename.split('.')[0]
+                    ext = f.filename.split('.')[1]
+                    filename = '_'.join(lazy_pinyin(name)) + '.' + ext
+                f.save(os.path.join(current_app.config['ALBUMS_DIR'], album,"{}-{}".format(str(datetime.date.today()), filename)))
+    return redirect(url_for('.show_album',album=album))
 
 
 @admin.route('/')

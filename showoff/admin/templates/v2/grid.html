@@ -6,6 +6,34 @@
 <script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
 <script src="{{ url_for('admin.static_files', filename='jquery.blockUI.js') }}"></script>
 <script src="{{ url_for('admin.static_files', filename='showoffadmin.js') }}"></script>
+<!-- 个性化主题文件 -->
+<!-- font-awesome样式主题文体 -->
+<link href="{{ url_for('admin.static_files',filename='css/font-awesome.css') }}" media="all" rel="stylesheet" type="text/css" />
+<!-- fileinput样式主题文体 -->
+<link href="{{ url_for('admin.static_files',filename='css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="{{ url_for('admin.static_files', filename='js/bootstrap.min.js') }}"></script>
+
+<!-- 个性化 js 文件 -->
+<!-- piexif.min.js is only needed if you wish to resize images before upload to restore exif data.
+ This must be loaded before fileinput.min.js -->
+<script src="{{ url_for('admin.static_files',filename='js/plugins/piexif.min.js') }}" type="text/javascript"></script>
+<!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+     This must be loaded before fileinput.min.js -->
+<script src="{{ url_for('admin.static_files',filename='js/plugins/sortable.min.js') }}" type="text/javascript"></script>
+<!-- purify.min.js is only needed if you wish to purify HTML content in your preview for HTML files.
+     This must be loaded before fileinput.min.js -->
+<script src="{{ url_for('admin.static_files',filename='js/plugins/purify.js') }}" type="text/javascript"></script>
+<!-- the main fileinput plugin file -->
+<script src="{{ url_for('admin.static_files',filename='js/fileinput.min.js') }}"></script>
+<!-- optionally if you need a theme like font awesome theme you can include
+    it as mentioned below -->
+<script src="{{ url_for('admin.static_files',filename='js/themes/fa/theme.min.js') }}"></script>
+<!-- optionally if you need translation for your language then include
+    locale file as mentioned below -->
+<script src="{{ url_for('admin.static_files',filename='js/locales/zh.js') }}"></script>
+
 {% endblock %}
 
 {% block body %}
@@ -42,8 +70,20 @@
         </div>
     </div>
 </div>
-
-{% include "v2/_paginator.html" %}
+<div class="row">
+                <div class="col-xs-6 ">
+                    <div class="col-xs-12 col-sm-8">
+                        <div>
+                            <form action="upload" method="post" role="form" enctype="multipart/form-data">
+                                <input id="upload" name="uploads" type="file" multiple class="file-loading">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 ">
+                    {% include "v2/_paginator.html" %}
+                </div>
+</div><!--/row-->
 <div class="clearfix"></div>
 <hr>
 
@@ -73,6 +113,7 @@
 
 <script>
     $(document).ready(function() {
+    $("#upload").fileinput({showCaption: false,language:'zh'});
     var cfg = {
     'base_url': '{{ url_for('admin.show_index') }}',
     'album': '{{ album }}'

@@ -1,6 +1,7 @@
-Flask>=0.10.1
-Flask-WTF>=0.9.5
+flask>=0.10.1
+flask-WTF>=0.9.5
 py-bcrypt>=0.4
 pillow>=2.5.1
 wtforms
+pypinyin
 uwsgi

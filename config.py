@@ -2,7 +2,7 @@
 from os import environ as env
 
 DEBUG = True
-TITLE = env.get('GALLERY_TITLE') or '我的家庭相册'
+TITLE = env.get('GALLERY_TITLE') or u'我的家庭相册'
 FRONTEND_HOST = '0.0.0.0' #not used in production
 FRONTEND_PORT = 5050 #not used in production
 FRONTEND_BASEURL = 'http://photo' #not used in production
@@ -25,9 +25,9 @@ IMAGE_SIZE = 800
 ALLOWED_SIZES = [75, 200, 400, 500, 640, 800, 1024, 1600, 'full']
 THEME = 'v2'
 ADMIN_THEME = 'v2'
-CACHE_DIR = '/mnt/acer_data/showoff_config/cache'
-EDITS_DIR = '/mnt/acer_data/showoff_config/edits'
-SHOWS_DIR = '/mnt/acer_data/showoff_config/shows'
-ALBUMS_DIR = env.get('ALBUMS_DIR') or '/mnt/acer_data/pictures'
+CACHE_DIR = u'/mnt/acer_data/showoff_config/cache'
+EDITS_DIR = u'/mnt/acer_data/showoff_config/edits'
+SHOWS_DIR = u'/mnt/acer_data/showoff_config/shows'
+ALBUMS_DIR = env.get('ALBUMS_DIR') or u'/mnt/acer_data/pictures'
 SECRET_KEY = env.get('SECRET_KEY') or 'secret_key'
 FRONTEND_LIST_TEMPLATES = ['list', 'list_small', 'grid', 'galleria']

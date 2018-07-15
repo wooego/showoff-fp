@@ -1,5 +1,5 @@
 {% extends "v2/layout.html" %}
-{% block title %}{{ config.TITLE.decode('utf-8') }} - {{ filename }}{% endblock %}
+{% block title %}{{ config.TITLE }} - {{ filename }}{% endblock %}
 {% block extrahead %}
 <script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
 <script src="{{ url_for('admin.static_files', filename='jquery.blockUI.js') }}"></script>

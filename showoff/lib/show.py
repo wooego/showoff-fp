@@ -33,8 +33,8 @@ class Show(object):
         self.session = session
         self.config = config
         self.album = album
-        self.album_dir = os.path.join(config['ALBUMS_DIR'], album)
-        self.show_dir = os.path.join(config['SHOWS_DIR'], album)
+        self.album_dir = os.path.join(config['ALBUMS_DIR'], self.album)
+        self.show_dir = os.path.join(config['SHOWS_DIR'], self.album)
         self.show_file = os.path.join(self.show_dir, 'show.json')
         self.data = {'files': [], 'settings': {}, 'users': {}}
         self.valid_settings = [

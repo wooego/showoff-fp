@@ -1,13 +1,13 @@
 {% extends "v2/layout.html" %}
 
 {% block body %}
-<h1><a href="{{ url_for('admin.show_index') }}">{{ config.TITLE.decode('utf-8') }}</a></h1>
+<h1><a href="{{ url_for('admin.show_index') }}">{{ config.TITLE }}</a></h1>
 
 <h2>可用的照片图册集：</h2>
 
 <ul>
 {% for album in albums %}
-<li><a href="{{ url_for('admin.show_album', album=album) }}">{{ album.decode('utf-8') }}</a></li>
+<li><a href="{{ url_for('admin.show_album', album=album) }}">{{ album }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

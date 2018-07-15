@@ -97,6 +97,16 @@ def rotate_url():
     pass
 
 
+@admin.route('/new_album', methods=['GET','POST'])
+def new_album():
+    album_name = request.args.get('album_name','unkown',type=unicode)
+    try:
+        os.mkdir(os.path.join(current_app.config['ALBUMS_DIR'],album_name))
+    except OSError:
+        pass
+    return redirect(url_for('.show_index'))
+
+
 @admin.route('/<album>/list/<template>/<int:page>/')
 @admin.route('/<album>/list/<int:page>/')
 def list_album(album, page, template='grid'):

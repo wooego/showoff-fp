@@ -10,8 +10,8 @@ def _paginated_overview(album, page, endpoint='admin.list', template='grid'):
     ext = re.compile(".(jpg|png|gif|bmp)$", re.IGNORECASE)
     files = [f for f in files if ext.search(f)]
 
-    if len(files) == 0:
-        abort(404)
+    #if len(files) == 0:
+        #abort(404)
 
     files.sort()
 

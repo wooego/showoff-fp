@@ -1,13 +1,25 @@
 {% extends "v2/layout.html" %}
-
+{% block extrahead %}
+<script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
+{%endblock%}
 {% block body %}
 <h1><a href="{{ url_for('admin.show_index') }}">{{ config.TITLE }}</a></h1>
 
-<h2>可用的照片图册集：</h2>
+<h2>可用的照片图册集：</h2> <input type="button" class="btn btn-primary" id="new_album" value="新建图册"/>
 
 <ul>
 {% for album in albums %}
 <li><a href="{{ url_for('admin.show_album', album=album) }}">{{ album }}</a></li>
 {% endfor %}
 </ul>
+<script>
+$('#new_album').click(function(){
+ var album_name=prompt("请输入图册名称","");
+ $.getJSON('{{url_for("admin.new_album")}}', {
+        album_name:album_name
+      }, function(data) {
+      });
+      return false;
+});
+</script>
 {% endblock %}

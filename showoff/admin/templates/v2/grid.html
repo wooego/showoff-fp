@@ -94,10 +94,10 @@
            href="{{ url_for('admin.image_page', album=album, filename=filename) }}" title="{{ filename }}">
             <img id="img-{{ loop.index }}" src="{{ url_for('admin.show_image', album=album, filename=filename, size=config.GRID_SIZE) }}" alt="{{ filename }}" data-filename="{{ filename }}">
         </a>
-        <div>publish:
+        <div>发布:
             <a href="#" class="toggle-publish" data-filename="{{ filename }}" data-value="{% if filename in show.data['files'] %}yes{% else %}no{% endif %}"></a>
         </div>
-        <div>rotate:
+        <div>旋转:
             <a href="#" class="rotate" data-steps="1" data-index="{{ loop.index }}">¼</a> &raquo;
             <a href="#" class="rotate" data-steps="2" data-index="{{ loop.index }}">½</a> &raquo;
             <a href="#" class="rotate" data-steps="3" data-index="{{ loop.index }}">¾</a>

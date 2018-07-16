@@ -113,7 +113,7 @@
 
 <script>
     $(document).ready(function() {
-    $("#upload").fileinput({showCaption: false,language:'zh'});
+    $("#upload").fileinput({showCaption: false,language:'zh',uploadAsync:true,textEncoding:"UTF-8"});
     var cfg = {
     'base_url': '{{ url_for('admin.show_index') }}',
     'album': '{{ album }}'

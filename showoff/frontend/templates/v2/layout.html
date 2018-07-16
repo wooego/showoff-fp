@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}{{ config.TITLE.decode('utf-8') }}{% endblock %}</title>
+        <title>{% block title %}{{ config.FRONTEND_TITLE }}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('frontend.static_files', filename='bootstrap/css/bootstrap.min.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ url_for('frontend.static_files', filename='style.css') }}" />
         {% block posthead %}{% endblock %}
@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url_for('frontend.show_index') }}">{{ config.TITLE.decode('utf-8') }}</a>{% block extratitle %}{% endblock %}
+                    <a class="navbar-brand" href="{{ url_for('frontend.show_index') }}">{{ config.FRONTEND_TITLE }}</a>{% block extratitle %}{% endblock %}
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">

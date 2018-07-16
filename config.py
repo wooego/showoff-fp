@@ -2,12 +2,13 @@
 from os import environ as env
 
 DEBUG = True
-TITLE = env.get('GALLERY_TITLE') or u'我的家庭相册'
+FRONTEND_TITLE = env.get('GALLERY_TITLE') or u'我的家庭相册'
 FRONTEND_HOST = '0.0.0.0' #not used in production
 FRONTEND_PORT = 5050 #not used in production
 FRONTEND_BASEURL = 'http://photo' #not used in production
 FRONTEND_PREFIX = '/gallery'
 FRONTEND_FCGI_SOCKET = '/home/fp862/workspaces/showoff/frontend.sock' #not used in production
+ADMIN_TITLE = u'管理家庭相册'
 ADMIN_HOST = '0.0.0.0' #not used in production
 ADMIN_PORT = 5051   #not used in production
 ADMIN_BASEURL = 'http://photo' #not used in production

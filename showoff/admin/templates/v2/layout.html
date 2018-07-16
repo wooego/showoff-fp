@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}{{ config.TITLE }}{% endblock %}</title>
+        <title>{% block title %}{{ config.ADMIN_TITLE }}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('admin.static_files', filename='bootstrap/css/bootstrap.min.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ url_for('admin.static_files', filename='style.css') }}" />
         {%block extrahead %}{% endblock %}
@@ -22,7 +22,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url_for('admin.show_index') }}">{{ config.TITLE }}</a>{% block extratitle %}{% endblock %}
+                    <a class="navbar-brand" href="{{ url_for('admin.show_index') }}">{{ config.ADMIN_TITLE }}</a>{% block extratitle %}{% endblock %}
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">

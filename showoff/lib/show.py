@@ -67,7 +67,7 @@ class Show(object):
            Returns:
              True if show requires user session, False otherwise
         """
-        if self.get_setting('require_authentication') != 'no':
+        if self.get_setting('require_authentication') == 'yes':
             if 'username' in self.session and 'album' in self.session and \
                     self.session['album'] == self.album:
                 return False

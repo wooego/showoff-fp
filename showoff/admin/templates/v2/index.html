@@ -3,7 +3,7 @@
 <script src="{{ url_for('admin.static_files', filename='jquery.js') }}"></script>
 {%endblock%}
 {% block body %}
-<h1><a href="{{ url_for('admin.show_index') }}">{{ config.TITLE }}</a></h1>
+<h1><a href="{{ url_for('admin.show_index') }}">{{ config.ADMIN_TITLE }}</a></h1>
 
 <h2>可用的照片图册集：</h2> <input type="button" class="btn btn-primary" id="new_album" value="新建图册"/>
 

@@ -146,6 +146,7 @@ def upload(album):
                     name = f.filename.split('.')[0]
                     ext = f.filename.split('.')[1]
                     filename = '_'.join(lazy_pinyin(name)) + '.' + ext
+                current_app.logger.info('save file "{}" to album "{}"'.format(filename,album))
                 f.save(os.path.join(current_app.config['ALBUMS_DIR'], album,"{}-{}".format(str(datetime.date.today()), filename)))
     return redirect(url_for('.show_album',album=album))
 

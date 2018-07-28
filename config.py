@@ -14,6 +14,7 @@ ADMIN_PORT = 5051   #not used in production
 ADMIN_BASEURL = 'http://photo' #not used in production
 ADMIN_PREFIX = '/admin'
 ADMIN_FCGI_SOCKET = '/home/fp862/workspaces/showoff/admin.sock' #not used in production
+ADMIN_LOGFILE=u'/mnt/acer_data/showoff_config/showoff.log'
 THUMBNAIL_SIZE = 400
 GRID_SIZE = 200
 ADMIN_THUMBNAIL_SIZE = 400
